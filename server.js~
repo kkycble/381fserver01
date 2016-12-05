@@ -155,7 +155,7 @@ MongoClient.connect('mongodb://test:test@ds159747.mlab.com:59747/restaurants', (
         res.redirect('/');
       }
       var criteria = 'Borough: '+req.params.borough;
-      res.write(JSON.stringify(db.collection('restaurants').find({borough: new RegExp(req.params.borough, 'i')})));
+      res.json(db.collection('restaurants').find({borough: new RegExp(req.params.borough, 'i')}));
     })
   })
   

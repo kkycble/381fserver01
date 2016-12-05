@@ -155,7 +155,7 @@ MongoClient.connect('mongodb://test:test@ds159747.mlab.com:59747/restaurants', (
         res.redirect('/');
       }
       var criteria = 'Borough: '+req.params.borough;
-      res.json(JSON.stringify(result));
+      res.json(result);
     })
   })
   
