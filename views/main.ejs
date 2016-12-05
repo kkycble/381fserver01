@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Restaurants - Main Page</title>
+</head>
+<body>
+  <p>
+  <h1>Welcome!</h1>
+  <h2>You are now logged in as <%= userid%>. </h2>
+  <form action="/logout" method="get">
+    <input type="submit" value="Logout">
+  </form>
+  <p>
+  <form action="/api/create" method="get">
+    <input type="submit" value="New">
+  </form>
+  <p>
+  <form action="/search" method="get">
+    <input type="submit" value="Search">
+  </form>
+  <p>
+  <form action="/api/read" method="get">
+    <input type="submit" value="Reset Search">
+  </form>
+  <br>
+  <h2>Showing <%= restaurants.length %> restaurant documents, Criteria: {<%=c%>}</h2>
+  <ul class="restaurants">
+  <% for(var i=0; i<restaurants.length; i++) {%>
+    <li class="restaurant">
+      <ul><a href=/display?_id=<%=restaurants[i]._id%>><%= restaurants[i].name %></a></ul>
+    </li>
+  <% } %>
+  </ul>
+</body>
+</html>
+
+
+
+  

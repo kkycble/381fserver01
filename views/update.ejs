@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Restaurant - Update</title>
+  </head>
+<body>
+  <h1>Update Restaurant Document</h1><br>
+	<form action="/update" encType="multipart/form-data" method="post">
+      Name: <br><input type="text" name="name"><br><br>
+      Borough: <br><input type="text" name="borough"><br><br>
+      Cuisine: <br><input type="text" name="cuisine"><br><br>
+      Street: <br><input type="text" name="street"><br><br>
+      Building: <br><input type="text" name="building"><br><br>
+      Zipcode: <br><input type="text" name="zipcode"><br><br>
+      GPS<br>
+      Latitude: <br><input type="text" name="lat"><br><br>
+      Longitude: <br><input type="text" name="long"><br><br>
+      Photo: <input type="file" name="photo" accept="image/*"><br><br>
+      <input type="hidden" name="_id" value="<%=_id%>">
+	<input type="submit" value="Update">
+	</form>
+  <br>
+</body>
+</html>

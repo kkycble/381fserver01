@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= r[0].name%></title>
+  <style>
+       #map {
+        height: 400px;
+        width: 520px;
+       }
+    </style>
+</head>
+<body>
+  <p>
+  <h1><%= r[0].name%></h1>
+  <% if (r[0].photo.data != '') {%>
+    <img src="data:<%=r[0].photo.mimetype%>;base64,<%=r[0].photo.data%>" alt="output" />
+  <% } %>
+  <h2>Borough: <%= r[0].borough%></h2><br>
+  <h2>Cuisine: <%= r[0].cuisine%></h2><br>
+  <h2>Street: <%= r[0].address.street%></h2><br>
+  <h2>Building: <%= r[0].address.building%></h2><br>
+  <h2>Zipcode: <%= r[0].address.zipcode%></h2><br>
+  <h2>GPS: [<%= r[0].address.coord.lat%>, <%= r[0].address.coord.long%>]</h2><br>
+  <h2>Rating: </h2>
+  <% if (r[0].ratings != null) {%>
+    <ul class="ratings">
+    <% for(var i=0; i<r[0].ratings.length; i++) { %>
+      <li class="rating">
+        <%=r[0].ratings[i].rating.userid%>: <%=r[0].ratings[i].rating.score%>
+      </li>
+    <%}%>
+    </ul>
+  <%}%>
+  <br>
+  <h2>Created By: <%= r[0].createdby%></h2><br>
+  <% if (r[0].address.coord.lat != '' && r[0].address.coord.long) {%>
+  <div id="map"></div>
+    <script>
+      function initMap() {
+        var uluru = {lat: <%=r[0].address.coord.lat%>, lng: <%=r[0].address.coord.long%>};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 17,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+      }
+    </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhLu4aq6i3UNymW0m8yZocyPRzG-NRuEo&callback=initMap">
+  </script>
+  <% }%>
+  <br>
+  <a href=/rate?_id=<%=r[0]._id%>> Rate</a><h7> </h7>
+  <a href=/api/read> Go Back</a><h7> </h7>
+  <a href="/update?_id=<%=r[0]._id%>"><h7> </h7> Update</a>
+  <a href="/delete?_id=<%=r[0]._id%>"><h7> </h7> Delete</a>
+</body>
+</html>
+
+  
